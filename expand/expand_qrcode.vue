@@ -4,9 +4,6 @@
 </template>
 
 <script>
-	import jquery from 'jquery';
-	import qrcode from '/js/qrcode.min.js';
-
 	export default {
 		props: {
 			id: {
@@ -58,7 +55,7 @@
 		},
 		methods: {
 			init(value) {
-				this.qrcode = new QRCode(this.id || this.ide, {
+				this.qrcode = new this.$QRCode(this.id || this.ide, {
 					text: value,
 					width: this.width || 128,
 					height: this.height || this.width || 128,

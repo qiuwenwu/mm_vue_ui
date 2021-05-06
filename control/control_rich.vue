@@ -3,10 +3,6 @@
 </template>
 
 <script>
-	import Vue from 'Vue';
-	// require sources
-	import Tinymce from '/tinymce/tinymce.min.js';
-
 	export default {
 		name: "tinymce",
 		props: {
@@ -156,7 +152,7 @@
 					this.upload_image(blobInfo, succFun, failFun);
 				}
 			};
-			Vue.nextTick(() => tinymce.init(options))
+			this.$nextTick(() => tinymce.init(options))
 		},
 		beforeDestroy() {
 			tinymce.execCommand('mceRemoveEditor', false, this.id_sub)

@@ -6,7 +6,7 @@
 </template>
 
 <script>
-	import mixin from '/src/mixins/component.js'
+	import mixin from '@/mixins/component.js'
 	import nav_quick from './nav_quick.vue'
 	export default {
 		mixins: [mixin],

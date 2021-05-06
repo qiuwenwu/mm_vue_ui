@@ -13,8 +13,7 @@
 </template>
 
 <script>
-	import mixin from '/src/mixins/component.js';
-	import Swiper from "swiper";
+	import mixin from '@/mixins/component.js';
 
 	export default {
 		mixins: [
@@ -33,7 +32,7 @@
 		},
 		methods: {
 			doing() {
-				var swiper = new Swiper('#' + this.id, {
+				var swiper = new this.$Swiper('#' + this.id, {
 					speed: 5000,
 					watchSlidesProgress: true, //查看slide的progress
 					resistanceRatio: 0, //禁止边缘移动

@@ -25,8 +25,7 @@
 </template>
 
 <script>
-	import mixin from '/src/mixins/component.js';
-	import Swiper from "swiper";
+	import mixin from '@/mixins/component.js';
 
 	export default {
 		mixins: [
@@ -50,7 +49,7 @@
 		methods: {
 			doing() {
 				var _this=  this;
-				var mySwiper = new Swiper('.swiper-container', {
+				var mySwiper = new this.$Swiper('.swiper-container', {
 					direction: 'vertical',
 					speed: 2000,
 					pagination: {

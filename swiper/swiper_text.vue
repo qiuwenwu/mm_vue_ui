@@ -16,8 +16,7 @@
 </template>
 
 <script>
-	import mixin from '/src/mixins/component.js';
-	import Swiper from "swiper";
+	import mixin from '@/mixins/component.js';
 
 	export default {
 		mixins: [
@@ -31,7 +30,7 @@
 		},
 		methods: {
 			doing() {
-				var swiper = new Swiper("#" + this.id, {
+				var swiper = new this.$Swiper("#" + this.id, {
 					speed: 2000,
 					autoplay: {
 						delay: 2800,
@@ -56,7 +55,7 @@
 		width: calc(100% - 4rem);
 		height: 1.5rem;
 	}
-	
+
 	.swiper_text .mm_view {
 		color: #666;
 		padding: 0 1rem;

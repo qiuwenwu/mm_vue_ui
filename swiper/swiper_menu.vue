@@ -15,8 +15,7 @@
 </template>
 
 <script>
-	import mixin from '/src/mixins/component.js';
-	import Swiper from "swiper";
+	import mixin from '@/mixins/component.js';
 
 	export default {
 		mixins: [
@@ -42,7 +41,7 @@
 		},
 		methods: {
 			doing() {
-				var swiper = new Swiper(this.id, {
+				var swiper = new this.$Swiper(this.id, {
 					autoplay: this.autoplay,
 					slidesPerView: 1,
 					pagination: {

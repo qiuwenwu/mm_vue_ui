@@ -8,7 +8,7 @@
 </template>
 
 <script>
-	import mixin from '/src/mixins/component.js'
+	import mixin from '@/mixins/component.js'
 	export default {
 		mixins: [mixin],
 		props: {

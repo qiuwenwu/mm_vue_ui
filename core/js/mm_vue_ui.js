@@ -15,14 +15,14 @@ function import_picker($) {
 			inputReadOnly: true,
 			toolbar: true,
 			toolbarCloseText: '确定',
-			toolbarTemplate: '<view class="bar bar-nav">\
-                <view class="nav">\
-				<view class="fr">\
+			toolbarTemplate: '<div class="bar bar-nav">\
+                <div class="nav">\
+				<div class="fr">\
 				<button class="btn btn-link pull-right close-picker">确定</button>\
-                </view>\
-				<view class="fm">请选择</view>\
-				</view>\
-                </view>',
+                </div>\
+				<div class="fm">请选择</div>\
+				</div>\
+                </div>',
 		};
 		params = params || {};
 		for (var def in defaults) {
@@ -396,16 +396,16 @@ function import_picker($) {
 			var columnItemsHTML = '';
 			var columnHTML = '';
 			if (col.divider) {
-				columnHTML += '<view class="picker-items-col picker-items-col-divider ' + (col.textAlign ? 'picker-items-col-' +
-					col.textAlign : '') + ' ' + (col.cssClass || '') + '">' + col.content + '</view>';
+				columnHTML += '<div class="picker-items-col picker-items-col-divider ' + (col.textAlign ? 'picker-items-col-' +
+					col.textAlign : '') + ' ' + (col.cssClass || '') + '">' + col.content + '</div>';
 			} else {
 				for (var j = 0; j < col.values.length; j++) {
-					columnItemsHTML += '<view class="picker-item" data-picker-value="' + col.values[j] + '">' + (col.displayValues ?
-						col.displayValues[j] : col.values[j]) + '</view>';
+					columnItemsHTML += '<div class="picker-item" data-picker-value="' + col.values[j] + '">' + (col.displayValues ?
+						col.displayValues[j] : col.values[j]) + '</div>';
 				}
 
-				columnHTML += '<view class="picker-items-col ' + (col.textAlign ? 'picker-items-col-' + col.textAlign : '') + ' ' +
-					(col.cssClass || '') + '"><view class="picker-items-col-wrapper">' + columnItemsHTML + '</view></view>';
+				columnHTML += '<div class="picker-items-col ' + (col.textAlign ? 'picker-items-col-' + col.textAlign : '') + ' ' +
+					(col.cssClass || '') + '"><div class="picker-items-col-wrapper">' + columnItemsHTML + '</div></div>';
 			}
 			return onlyItems ? columnItemsHTML : columnHTML;
 		};
@@ -423,13 +423,13 @@ function import_picker($) {
 			pickerClass = 'picker-modal picker-columns ' + (p.params.cssClass || '') + (p.params.rotateEffect ? ' picker-3d' :
 				'');
 			pickerHTML =
-				'<view class="' + (pickerClass) + '">' +
+				'<div class="' + (pickerClass) + '">' +
 				(p.params.toolbar ? p.params.toolbarTemplate.replace(/{{closeText}}/g, p.params.toolbarCloseText) : '') +
-				'<view class="picker-modal-inner picker-items">' +
+				'<div class="picker-modal-inner picker-items">' +
 				colsHTML +
-				'<view class="picker-center-highlight"></view>' +
-				'</view>' +
-				'</view>';
+				'<div class="picker-center-highlight"></div>' +
+				'</div>' +
+				'</div>';
 
 			p.pickerHTML = pickerHTML;
 		};
@@ -828,20 +828,20 @@ function load_ui(jquery) {
 
 			if (params.buttons && params.buttons.length > 0) {
 				for (var i = 0; i < params.buttons.length; i++) {
-					buttonsHTML += "<text class=\"modal-button" + (params.buttons[i].bold ? " modal-button-bold" : "") + "\">" +
-						params.buttons[i].text + "</text>";
+					buttonsHTML += "<span class=\"modal-button" + (params.buttons[i].bold ? " modal-button-bold" : "") + "\">" +
+						params.buttons[i].text + "</span>";
 				}
 			}
 
 			var extraClass = params.extraClass || "";
-			var titleHTML = params.title ? "<view class=\"modal-title\">" + params.title + "</view>" : "";
-			var textHTML = params.text ? "<view class=\"modal-text\">" + params.text + "</view>" : "";
+			var titleHTML = params.title ? "<div class=\"modal-title\">" + params.title + "</div>" : "";
+			var textHTML = params.text ? "<div class=\"modal-text\">" + params.text + "</div>" : "";
 			var afterTextHTML = params.afterText ? params.afterText : "";
 			var noButtons = !params.buttons || params.buttons.length === 0 ? "modal-no-buttons" : "";
 			var verticalButtons = params.verticalButtons ? "modal-buttons-vertical" : "";
-			modalHTML = "<view class=\"modal " + extraClass + " " + noButtons + "\"><view class=\"modal-inner\">" + (titleHTML +
-					textHTML + afterTextHTML) + "</view><view class=\"modal-buttons " + verticalButtons + "\">" + buttonsHTML +
-				"</view></view>";
+			modalHTML = "<div class=\"modal " + extraClass + " " + noButtons + "\"><div class=\"modal-inner\">" + (titleHTML +
+					textHTML + afterTextHTML) + "</div><div class=\"modal-buttons " + verticalButtons + "\">" + buttonsHTML +
+				"</div></div>";
 			_modalTemplateTempDiv.innerHTML = modalHTML;
 			var modal = $(_modalTemplateTempDiv).children();
 			$(defaults.modalContainer).append(modal[0]);
@@ -976,7 +976,7 @@ function load_ui(jquery) {
 			$.hidePreloader();
 			$.showPreloader.preloaderModal = $.modal({
 				title: title || defaults.modalPreloaderTitle,
-				text: "<view class=\"preloader\"></view>"
+				text: "<div class=\"preloader\"></div>"
 			});
 			return $.showPreloader.preloaderModal;
 		};
@@ -988,7 +988,7 @@ function load_ui(jquery) {
 		$.showIndicator = function() {
 			if ($(".preloader-indicator-modal")[0]) return;
 			$(defaults.modalContainer).append(
-				"<view class=\"preloader-indicator-overlay\"></view><view class=\"preloader-indicator-modal\"><text class=\"preloader preloader-white\"></text></view>"
+				"<div class=\"preloader-indicator-overlay\"></div><div class=\"preloader-indicator-modal\"><span class=\"preloader preloader-white\"></span></div>"
 			);
 		};
 
@@ -999,8 +999,8 @@ function load_ui(jquery) {
 		$.showIndicatorDiy = function(htmlcontent) {
 			if ($(".preloader-indicator-modal")[0]) return;
 			$(defaults.modalContainer).append(
-				"<view class=\"preloader-indicator-overlay\"></view><view class=\"preloader-indicator-modal\">" + htmlcontent +
-				"</view>");
+				"<div class=\"preloader-indicator-overlay\"></div><div class=\"preloader-indicator-modal\">" + htmlcontent +
+				"</div>");
 		};
 
 		$.hideIndicatorDiy = function() {
@@ -1020,19 +1020,19 @@ function load_ui(jquery) {
 
 			for (var i = 0; i < params.length; i++) {
 				for (var j = 0; j < params[i].length; j++) {
-					if (j === 0) buttonsHTML += "<view class=\"actions-modal-group\">";
+					if (j === 0) buttonsHTML += "<div class=\"actions-modal-group\">";
 					var button = params[i][j];
 					var buttonClass = button.label ? "actions-modal-label" : "actions-modal-button";
 					if (button.bold) buttonClass += " actions-modal-button-bold";
 					if (button.color) buttonClass += " font_" + button.color;
 					if (button.bg) buttonClass += " bg_" + button.bg;
 					if (button.disabled) buttonClass += " disabled";
-					buttonsHTML += "<text class=\"" + buttonClass + "\">" + button.text + "</text>";
-					if (j === params[i].length - 1) buttonsHTML += "</view>";
+					buttonsHTML += "<span class=\"" + buttonClass + "\">" + button.text + "</span>";
+					if (j === params[i].length - 1) buttonsHTML += "</div>";
 				}
 			}
 
-			modalHTML = "<view class=\"actions-modal\">" + buttonsHTML + "</view>";
+			modalHTML = "<div class=\"actions-modal\">" + buttonsHTML + "</div>";
 			_modalTemplateTempDiv.innerHTML = modalHTML;
 			modal = $(_modalTemplateTempDiv).children();
 			$(defaults.modalContainer).append(modal[0]);
@@ -1121,7 +1121,7 @@ function load_ui(jquery) {
 		};
 
 		$.toast = function(msg, duration, extraclass) {
-			var $toast = $("<view class=\"modal toast " + (extraclass || "") + "\">" + msg + "</view>").appendTo(document.body);
+			var $toast = $("<div class=\"modal toast " + (extraclass || "") + "\">" + msg + "</div>").appendTo(document.body);
 			$.openModal($toast, function() {
 				setTimeout(function() {
 					$.closeModal($toast);
@@ -1154,11 +1154,11 @@ function load_ui(jquery) {
 
 			if (!isLoginScreen && !isPickerModal && !isToast) {
 				if ($(".modal-overlay").length === 0 && !isPopup) {
-					$(defaults.modalContainer).append("<view class=\"modal-overlay\"></view>");
+					$(defaults.modalContainer).append("<div class=\"modal-overlay\"></div>");
 				}
 
 				if ($(".popup-overlay").length === 0 && isPopup) {
-					$(defaults.modalContainer).append("<view class=\"popup-overlay\"></view>");
+					$(defaults.modalContainer).append("<div class=\"popup-overlay\"></div>");
 				}
 
 				overlay = isPopup ? $(".popup-overlay") : $(".modal-overlay");
@@ -1498,7 +1498,7 @@ function load_ui(jquery) {
 		}
 	};
 	var mm_icon = {
-		template: "<view class=\"mm_icon\" v-if=\"src && src.indexOf('<') !== -1\" v-html=\"src\"></view><view class=\"mm_icon\" v-else-if=\"src\" :style=\"'background-image: url(' + src + ');'\"><img class=\"img\" :src=\"src\" :alt=\"alt\" :onerror=\"onerror\" /><figcaption v-if=\"$slots.default\"><slot></slot></figcaption></view><view class=\"mm_icon\" v-else></view>",
+		template: "<div class=\"mm_icon\" v-if=\"src && src.indexOf('<') !== -1\" v-html=\"src\"></div><div class=\"mm_icon\" v-else-if=\"src\" :style=\"'background-image: url(' + src + ');'\"><img class=\"img\" :src=\"src\" :alt=\"alt\" :onerror=\"onerror\" /><figcaption v-if=\"$slots.default\"><slot></slot></figcaption></div><div class=\"mm_icon\" v-else></div>",
 		props: {
 			src: {
 				type: String,
@@ -1524,7 +1524,7 @@ function load_ui(jquery) {
 		}
 	};
 	var mm_loading = {
-		template: "<view class=\"mm_loading\"><view class=\"load\"><slot><img src=\"/img/loading.svg\" :style=\"'width:' + wh + ';height:' + ht\" v-if=\"display == '1'\" /><view class=\"progress\" :style=\"'width:' + wh + ';height:' + ht\" v-else></view></slot></view><view class=\"state\">{{ title }}<text class=\"value\" v-show=\"value\"> {{ value }}</text></view></view>",
+		template: "<div class=\"mm_loading\"><div class=\"load\"><slot><img src=\"/img/loading.svg\" :style=\"'width:' + wh + ';height:' + ht\" v-if=\"display == '1'\" /><div class=\"progress\" :style=\"'width:' + wh + ';height:' + ht\" v-else></div></slot></div><div class=\"state\">{{ title }}<span class=\"value\" v-show=\"value\"> {{ value }}</span></div></div>",
 		props: {
 			value: {
 				type: Number,
@@ -1578,10 +1578,10 @@ function load_ui(jquery) {
 		}
 	};
 	var mm_body = {
-		template: "<view class=\"mm_body\"><slot></slot></view>"
+		template: "<div class=\"mm_body\"><slot></slot></div>"
 	};
 	var mm_col = {
-		template: "<view :class=\"'mm_col' + this.wh\"><slot></slot></view>",
+		template: "<div :class=\"'mm_col' + this.wh\"><slot></slot></div>",
 		props: {
 			width: {
 				type: String,
@@ -1606,7 +1606,7 @@ function load_ui(jquery) {
 		template: "<footer class=\"mm_foot\"><slot></slot></footer>"
 	};
 	var mm_row = {
-		template: "<view :class=\"'mm_row' + cl\"><slot></slot></view>",
+		template: "<div :class=\"'mm_row' + cl\"><slot></slot></div>",
 		props: {
 			col: {
 				type: String,
@@ -1626,7 +1626,7 @@ function load_ui(jquery) {
 		}
 	};
 	var mm_grid = {
-		template: "<view :class=\"'mm_grid' + cl\"><slot></slot></view>",
+		template: "<div :class=\"'mm_grid' + cl\"><slot></slot></div>",
 		props: {
 			col: {
 				type: String,
@@ -1646,13 +1646,13 @@ function load_ui(jquery) {
 		}
 	};
 	var mm_group = {
-		template: "<view class=\"mm_group\"><slot></slot></view>"
+		template: "<div class=\"mm_group\"><slot></slot></div>"
 	};
 	var mm_head = {
-		template: "<view class=\"mm_head\"><slot></slot></view>"
+		template: "<div class=\"mm_head\"><slot></slot></div>"
 	};
 	var mm_item = {
-		template: "<view class=\"mm_item\" v-if=\"!url\"><slot></slot></view><view class=\"mm_item\" @click=\"openBrowser()\" v-else-if=\"url.indexOf('http:') === 0 || url.indexOf('https:') === 0\"><slot></slot></view><router-link class=\"mm_item\" :to=\"url\" v-else><slot></slot></router-link>",
+		template: "<div class=\"mm_item\" v-if=\"!url\"><slot></slot></div><div class=\"mm_item\" @click=\"openBrowser()\" v-else-if=\"url.indexOf('http:') === 0 || url.indexOf('https:') === 0\"><slot></slot></div><router-link class=\"mm_item\" :to=\"url\" v-else><slot></slot></router-link>",
 		props: {
 			url: {
 				type: String,
@@ -1672,7 +1672,7 @@ function load_ui(jquery) {
 		}
 	};
 	var mm_list = {
-		template: "<view :class=\"'mm_list' + cl\"><slot></slot></view>",
+		template: "<div :class=\"'mm_list' + cl\"><slot></slot></div>",
 		props: {
 			col: {
 				type: String,
@@ -1692,10 +1692,10 @@ function load_ui(jquery) {
 		}
 	};
 	var mm_main = {
-		template: "<view class=\"mm_main\"><slot></slot></view>"
+		template: "<div class=\"mm_main\"><slot></slot></div>"
 	};
 	var mm_modal = {
-		template: "<view class=\"mm_modal\" v-bind:class=\"{ 'show' : show }\"><view v-bind:class=\"'from_' + display\"><slot></slot></view><view class=\"mask\" v-if=\"mask && mask != 'false'\" @click=\"close()\"></view></view>",
+		template: "<div class=\"mm_modal\" v-bind:class=\"{ 'show' : show }\"><div v-bind:class=\"'from_' + display\"><slot></slot></div><div class=\"mask\" v-if=\"mask && mask != 'false'\" @click=\"close()\"></div></div>",
 		props: {
 			display: {
 				type: String,
@@ -1721,10 +1721,10 @@ function load_ui(jquery) {
 		}
 	};
 	var mm_movable = {
-		template: "<view class=\"mm_movable\"><slot></slot></view>"
+		template: "<div class=\"mm_movable\"><slot></slot></div>"
 	};
 	var mm_page = {
-		template: "<view class=\"mm_page\"><slot></slot></view>",
+		template: "<div class=\"mm_page\"><slot></slot></div>",
 		props: {
 			fun: {
 				type: Function,
@@ -1733,7 +1733,7 @@ function load_ui(jquery) {
 		}
 	};
 	var mm_view = {
-		template: "<view class=\"mm_view\" v-if=\"!url\"><slot></slot></view><view class=\"mm_view\" @click=\"openBrowser()\" v-else-if=\"url.indexOf('http:') === 0 || url.indexOf('https:') === 0\"><slot></slot></view><router-link class=\"mm_view\" :to=\"url\" v-else><slot></slot></router-link>",
+		template: "<div class=\"mm_view\" v-if=\"!url\"><slot></slot></div><div class=\"mm_view\" @click=\"openBrowser()\" v-else-if=\"url.indexOf('http:') === 0 || url.indexOf('https:') === 0\"><slot></slot></div><router-link class=\"mm_view\" :to=\"url\" v-else><slot></slot></router-link>",
 		props: {
 			url: {
 				type: String,
@@ -1754,7 +1754,7 @@ function load_ui(jquery) {
 	};
 
 	var mm_card = {
-		template: "<view class=\"mm_card\"><slot></slot></view>",
+		template: "<div class=\"mm_card\"><slot></slot></div>",
 		props: {
 			fun: {
 				type: Function,
@@ -1795,7 +1795,7 @@ function load_ui(jquery) {
 	}
 
 	var mm_side = {
-		template: "<view class=\"mm_side\" :class=\"{'hide-x': hide, fold: fold}\" :id=\"side_id\"><slot></slot><view class=\"line\"></view><view class=\"mask\" @click=\"set_hide()\"></view></view>",
+		template: "<div class=\"mm_side\" :class=\"{'hide-x': hide, fold: fold}\" :id=\"side_id\"><slot></slot><div class=\"line\"></div><div class=\"mask\" @click=\"set_hide()\"></div></div>",
 		model: {
 			prop: "hide",
 			event: "change"
@@ -1841,7 +1841,7 @@ function load_ui(jquery) {
 	};
 
 	var mm_nav_top = {
-		template: "<view class=\"mm_nav_top\" :class=\"{show: show}\"><button class=\"btn_link\" @click=\"$emit('change', !show)\"><i class=\"fa fa-bars\"></i></button><view class=\"nav_warp\"><view class=\"nav\"><slot></slot></view><view class=\"mask\" @click=\"$emit('change', false)\"></view></view></view>",
+		template: "<div class=\"mm_nav_top\" :class=\"{show: show}\"><button class=\"btn_link\" @click=\"$emit('change', !show)\"><i class=\"fa fa-bars\"></i></button><div class=\"nav_warp\"><div class=\"nav\"><slot></slot></div><div class=\"mask\" @click=\"$emit('change', false)\"></div></div></div>",
 		model: {
 			prop: 'show',
 			event: 'change'
@@ -1858,7 +1858,7 @@ function load_ui(jquery) {
 	};
 
 	var mm_table = {
-		template: "<view :class=\"'mm_table table-' + type\"><table><slot></slot></table></view>",
+		template: "<div :class=\"'mm_table table-' + type\"><table><slot></slot></table></div>",
 		props: {
 			type: {
 				type: String,
@@ -1868,14 +1868,14 @@ function load_ui(jquery) {
 	};
 
 	var mm_warp = {
-		template: "<view class=\"mm_warp\"><slot></slot></view>"
+		template: "<div class=\"mm_warp\"><slot></slot></div>"
 	};
 	var mm_container = {
-		template: "<view class=\"mm_container\"><slot></slot></view>"
+		template: "<div class=\"mm_container\"><slot></slot></div>"
 	};
 
 	var control_checkbox = {
-		template: "<view class=\"control_checkbox\"><view class=\"title\" v-if=\"title\" v-html=\"title\"></view><view class=\"value\" v-bind:class=\"{'disabled': disabled }\"><label v-for=\"(o, idx) in options\" :key=\"idx\" :class=\"{ 'active': has(o[field]), 'disabled': o.disabled }\" @click=\"selected(o[field])\"><text class=\"figure\"></text><text class=\"name\">{{ o.name }}</text></label></view><view class=\"tip\" v-if=\"tip\">{{ tip }}</view></view>",
+		template: "<div class=\"control_checkbox\"><div class=\"title\" v-if=\"title\" v-html=\"title\"></div><div class=\"value\" v-bind:class=\"{'disabled': disabled }\"><label v-for=\"(o, idx) in options\" :key=\"idx\" :class=\"{ 'active': has(o[field]), 'disabled': o.disabled }\" @click=\"selected(o[field])\"><span class=\"figure\"></span><span class=\"name\">{{ o.name }}</span></label></div><div class=\"tip\" v-if=\"tip\">{{ tip }}</div></div>",
 		mixins: [form_mixin],
 		props: {
 			symbol: {
@@ -1909,7 +1909,7 @@ function load_ui(jquery) {
 		}
 	};
 	var mm_code = {
-		template: "<view class=\"mm_code\"><mm_icon :icon=\"icon\"></mm_icon><view class=\"title\" v-if=\"title\">{{ title }}</view><slot><mm_group><input type=\"text\" :value=\"value\" :placeholder=\"desc || placeholder\" @input=\"$emit('input', $event.target.value)\"></input><button :class=\"'btn-' + type\" v-html=\"btn\"></button></mm_group></slot><view class=\"tip\" v-if=\"tip\" v-html=\"tip\"></view></view>",
+		template: "<div class=\"mm_code\"><mm_icon :icon=\"icon\"></mm_icon><div class=\"title\" v-if=\"title\">{{ title }}</div><slot><mm_group><input type=\"text\" :value=\"value\" :placeholder=\"desc || placeholder\" @input=\"$emit('input', $event.target.value)\"></input><button :class=\"'btn-' + type\" v-html=\"btn\"></button></mm_group></slot><div class=\"tip\" v-if=\"tip\" v-html=\"tip\"></div></div>",
 		mixins: [form_mixin],
 		props: {
 			placeholder: {
@@ -1934,7 +1934,7 @@ function load_ui(jquery) {
 	};
 
 	var control_input = {
-		template: "<view class=\"control_input\"><view class=\"title\" v-if=\"title\" v-html=\"title\"></view><view class=\"value\" v-bind:class=\"{'disabled': disabled }\"><input v-bind:class=\"{'auto-width': auto }\" :type=\"type\" :value=\"value\" :min=\"min\" :max=\"max\" :minlength=\"min_length\" :maxlength=\"max_length\" :placeholder=\"desc || placeholder\" @input=\"set\" :disabled=\"disabled\" :required=\"required\" @blur=\"$emit('blur')\" :style=\"style\" /><slot><text class=\"unit\" v-if=\"unit\">{{ unit }}</text></slot></view><view class=\"tip\" v-if=\"tip\">{{ tip }}</view></view>",
+		template: "<div class=\"control_input\"><div class=\"title\" v-if=\"title\" v-html=\"title\"></div><div class=\"value\" v-bind:class=\"{'disabled': disabled }\"><input v-bind:class=\"{'auto-width': auto }\" :type=\"type\" :value=\"value\" :min=\"min\" :max=\"max\" :minlength=\"min_length\" :maxlength=\"max_length\" :placeholder=\"desc || placeholder\" @input=\"set\" :disabled=\"disabled\" :required=\"required\" @blur=\"$emit('blur')\" :style=\"style\" /><slot><span class=\"unit\" v-if=\"unit\">{{ unit }}</span></slot></div><div class=\"tip\" v-if=\"tip\">{{ tip }}</div></div>",
 		mixins: [form_mixin],
 		props: {
 			placeholder: {
@@ -1989,7 +1989,7 @@ function load_ui(jquery) {
 		}
 	};
 	var control_number = {
-		template: "<view class=\"control_number\"><view class=\"title\" v-if=\"title\" v-html=\"title\"></view><view class=\"value\" v-bind:class=\"{'disabled': disabled }\"><mm_btn class=\"btn_primary btn_del\" @click.native=\"del\"><span></text></mm_btn><input type=\"number\" :value.number=\"value\" :min=\"min\" :max=\"max\" @input=\"set\" @blur=\"setInt\" :disabled=\"disabled\"/><mm_btn class=\"btn_primary btn_add\" @click.native=\"add\"><span></text></mm_btn></view><view class=\"tip\" v-if=\"tip\">{{ tip }}</view></view>",
+		template: "<div class=\"control_number\"><div class=\"title\" v-if=\"title\" v-html=\"title\"></div><div class=\"value\" v-bind:class=\"{'disabled': disabled }\"><mm_btn class=\"btn_primary btn_del\" @click.native=\"del\"><span></span></mm_btn><input type=\"number\" :value.number=\"value\" :min=\"min\" :max=\"max\" @input=\"set\" @blur=\"setInt\" :disabled=\"disabled\"/><mm_btn class=\"btn_primary btn_add\" @click.native=\"add\"><span></span></mm_btn></div><div class=\"tip\" v-if=\"tip\">{{ tip }}</div></div>",
 		mixins: [form_mixin],
 		methods: {
 			setInt: function setInt(e) {
@@ -2026,7 +2026,7 @@ function load_ui(jquery) {
 		}
 	};
 	var control_pager = {
-		template: "<view class=\"control_pager\"><view class=\"nav\"><a href=\"javascript:void(0);\" v-if=\"display === '2'\" class=\"first\" @click=\"first\" v-bind:class=\"{ 'disabled': page === 1 }\"><text v-html=\"icons[0]\"></text></a><a href=\"javascript:void(0);\" class=\"previous\" @click=\"previous\" v-bind:class=\"{ 'disabled' : page <= 1 }\"><text v-html=\"icons[1]\"></text></a><a href=\"javascript:void(0);\" v-for=\"(p, i) in pages\" :key=\"i\" v-bind:class=\"{'active': page == p }\" @click=\"set(p)\">{{ p }}</a><a href=\"javascript:void(0);\" class=\"next\" v-bind:class=\"{ 'disabled': page >= ct }\" @click=\"next\"><text v-html=\"icons[2]\"></text></a><a href=\"javascript:void(0);\" v-if=\"display === '2'\" class=\"last\" v-bind:class=\"{ 'disabled': page == ct }\" @click=\"last\"><text v-html=\"icons[3]\"></text></a></view><slot></slot></view>",
+		template: "<div class=\"control_pager\"><div class=\"nav\"><a href=\"javascript:void(0);\" v-if=\"display === '2'\" class=\"first\" @click=\"first\" v-bind:class=\"{ 'disabled': page === 1 }\"><span v-html=\"icons[0]\"></span></a><a href=\"javascript:void(0);\" class=\"previous\" @click=\"previous\" v-bind:class=\"{ 'disabled' : page <= 1 }\"><span v-html=\"icons[1]\"></span></a><a href=\"javascript:void(0);\" v-for=\"(p, i) in pages\" :key=\"i\" v-bind:class=\"{'active': page == p }\" @click=\"set(p)\">{{ p }}</a><a href=\"javascript:void(0);\" class=\"next\" v-bind:class=\"{ 'disabled': page >= ct }\" @click=\"next\"><span v-html=\"icons[2]\"></span></a><a href=\"javascript:void(0);\" v-if=\"display === '2'\" class=\"last\" v-bind:class=\"{ 'disabled': page == ct }\" @click=\"last\"><span v-html=\"icons[3]\"></span></a></div><slot></slot></div>",
 		model: {
 			prop: "page",
 			event: "input"
@@ -2131,7 +2131,7 @@ function load_ui(jquery) {
 		}
 	};
 	var control_radio = {
-		template: "<view class=\"control_radio\"><view class=\"title\" v-if=\"title\" v-html=\"title\"></view><view class=\"value\" v-bind:class=\"{'disabled': disabled }\"><label v-for=\"(o, idx) in options\" :key=\"idx\" :class=\"{ 'active': value == o[field] }\" @click=\"$emit('input', $event.target.value)\"><input type=\"radio\" :name=\"name\" :value=\"o[field]\" /><text class=\"figure\"></text><text class=\"name\">{{ o.name }}</text></label></view><view class=\"tip\" v-if=\"tip\">{{ tip }}</view></view>",
+		template: "<div class=\"control_radio\"><div class=\"title\" v-if=\"title\" v-html=\"title\"></div><div class=\"value\" v-bind:class=\"{'disabled': disabled }\"><label v-for=\"(o, idx) in options\" :key=\"idx\" :class=\"{ 'active': value == o[field] }\" @click=\"$emit('input', $event.target.value)\"><input type=\"radio\" :name=\"name\" :value=\"o[field]\" /><span class=\"figure\"></span><span class=\"name\">{{ o.name }}</span></label></div><div class=\"tip\" v-if=\"tip\">{{ tip }}</div></div>",
 		mixins: [form_mixin],
 		data: function data() {
 			var name = this.name;
@@ -2146,7 +2146,7 @@ function load_ui(jquery) {
 		}
 	};
 	var control_reverse = {
-		template: "<view class=\"control_reverse\"><view class=\"title\" v-if=\"title\" v-html=\"title\" @click=\"set\"></view><view class=\"value\" v-bind:class=\"{'disabled': disabled }\"><slot><view class=\"figure\" v-bind:class=\"{ 'reverse_arrow' : display !== '1' }\" @click=\"set\"><text class=\"up\" v-bind:class=\"{'active': selected === 0 }\"></text><text class=\"down\" v-bind:class=\"{'active': selected === 1 }\"></text></view></slot></view><view class=\"tip\" v-if=\"tip\">{{ tip }}</view></view>",
+		template: "<div class=\"control_reverse\"><div class=\"title\" v-if=\"title\" v-html=\"title\" @click=\"set\"></div><div class=\"value\" v-bind:class=\"{'disabled': disabled }\"><slot><div class=\"figure\" v-bind:class=\"{ 'reverse_arrow' : display !== '1' }\" @click=\"set\"><span class=\"up\" v-bind:class=\"{'active': selected === 0 }\"></span><span class=\"down\" v-bind:class=\"{'active': selected === 1 }\"></span></div></slot></div><div class=\"tip\" v-if=\"tip\">{{ tip }}</div></div>",
 		mixins: [form_mixin],
 		methods: {
 			set: function set() {
@@ -2229,7 +2229,7 @@ function load_ui(jquery) {
 		}
 	};
 	var control_select = {
-		template: "<view class=\"control_select\"><view class=\"title\" v-if=\"title\" v-html=\"title\"></view><view class=\"value\" v-bind:class=\"{'disabled': disabled }\"><select v-if=\"type === 'text'\" :value=\"value\" @change=\"set\" :disabled=\"disabled\"><option v-for=\"(o, idx) in options\" :key=\"idx\" :value=\"o[field]\">{{ o.name }}</option></select><select v-else-if=\"type === 'multiple'\" :value=\"value\" @change=\"set\" :disabled=\"disabled\" multiple><option v-for=\"(o, idx) in options\" :key=\"idx\" :value=\"o[field]\">{{ o.name }}</option></select><a href=\"javascript:void(0)\" class=\"click\" v-else-if=\"type === 'click'\" v-bind:class=\"{ 'current': sw }\"><view :class=\"{'selected': !$slots.default}\" @click=\"sw = !sw\"><slot>{{ val_name }}</slot></view><view class=\"mm_box\"><ul><li v-for=\"(o, idx) in options\" :key=\"idx\" @click=\"click_fun(o[field]);sw = false\" :class=\"{ 'active': value === o[field] }\">{{ o.name }}</li></ul></view></a><a href=\"javascript:void(0)\" v-bind:class=\"type\" v-else><view class=\"selected\"><slot>{{ val_name }}</slot></view><view class=\"mm_box\"><ul><li v-for=\"(o, idx) in options\" :key=\"idx\" @click=\"click_fun(o[field])\" :class=\"{ 'active': value === o[field] }\">{{ o.name }}</li></ul></view></a></view><view class=\"tip\" v-if=\"tip\">{{ tip }}</view></view>",
+		template: "<div class=\"control_select\"><div class=\"title\" v-if=\"title\" v-html=\"title\"></div><div class=\"value\" v-bind:class=\"{'disabled': disabled }\"><select v-if=\"type === 'text'\" :value=\"value\" @change=\"set\" :disabled=\"disabled\"><option v-for=\"(o, idx) in options\" :key=\"idx\" :value=\"o[field]\">{{ o.name }}</option></select><select v-else-if=\"type === 'multiple'\" :value=\"value\" @change=\"set\" :disabled=\"disabled\" multiple><option v-for=\"(o, idx) in options\" :key=\"idx\" :value=\"o[field]\">{{ o.name }}</option></select><a href=\"javascript:void(0)\" class=\"click\" v-else-if=\"type === 'click'\" v-bind:class=\"{ 'current': sw }\"><div :class=\"{'selected': !$slots.default}\" @click=\"sw = !sw\"><slot>{{ val_name }}</slot></div><div class=\"mm_box\"><ul><li v-for=\"(o, idx) in options\" :key=\"idx\" @click=\"click_fun(o[field]);sw = false\" :class=\"{ 'active': value === o[field] }\">{{ o.name }}</li></ul></div></a><a href=\"javascript:void(0)\" v-bind:class=\"type\" v-else><div class=\"selected\"><slot>{{ val_name }}</slot></div><div class=\"mm_box\"><ul><li v-for=\"(o, idx) in options\" :key=\"idx\" @click=\"click_fun(o[field])\" :class=\"{ 'active': value === o[field] }\">{{ o.name }}</li></ul></div></a></div><div class=\"tip\" v-if=\"tip\">{{ tip }}</div></div>",
 		mixins: [form_mixin],
 		methods: {
 			set: function set(e) {
@@ -2265,7 +2265,7 @@ function load_ui(jquery) {
 		}
 	};
 	var control_switch = {
-		template: "<view class=\"control_switch\"><view class=\"title\" v-if=\"title\" v-html=\"title\"></view><view class=\"value\" v-bind:class=\"{'disabled': disabled }\"><label :class=\"{ 'active': value === 1 }\" @click=\"set\"><view class=\"onoff\"><text class=\"on\" v-if=\"display === '1'\"></text><text class=\"off\" v-if=\"display === '1'\"></text></view></label></view><view class=\"tip\" v-if=\"tip\">{{ tip }}</view></view>",
+		template: "<div class=\"control_switch\"><div class=\"title\" v-if=\"title\" v-html=\"title\"></div><div class=\"value\" v-bind:class=\"{'disabled': disabled }\"><label :class=\"{ 'active': value === 1 }\" @click=\"set\"><div class=\"onoff\"><span class=\"on\" v-if=\"display === '1'\"></span><span class=\"off\" v-if=\"display === '1'\"></span></div></label></div><div class=\"tip\" v-if=\"tip\">{{ tip }}</div></div>",
 		mixins: [form_mixin],
 		methods: {
 			set: function set() {
@@ -2280,7 +2280,7 @@ function load_ui(jquery) {
 		}
 	};
 	var mm_nav = {
-		template: "<view class=\"mm_nav\"><ul><li v-for=\"(o, index) in list\" :key=\"index\"><a :href=\"o.url\" v-if=\"o.url.indexOf('http:') === 0 || o.url.indexOf('https:') === 0\">{{ o.title }}<text class=\"message\" v-show=\"o.message > 0\">{{ o.message }}</text></a><router-link :to=\"o.url\" v-else>{{ o.title }}<text class=\"message\" v-show=\"o.message > 0\">{{ o.message }}</text></router-link></li></ul></view>",
+		template: "<div class=\"mm_nav\"><ul><li v-for=\"(o, index) in list\" :key=\"index\"><a :href=\"o.url\" v-if=\"o.url.indexOf('http:') === 0 || o.url.indexOf('https:') === 0\">{{ o.title }}<span class=\"message\" v-show=\"o.message > 0\">{{ o.message }}</span></a><router-link :to=\"o.url\" v-else>{{ o.title }}<span class=\"message\" v-show=\"o.message > 0\">{{ o.message }}</span></router-link></li></ul></div>",
 		props: {
 			list: {
 				type: Array,
@@ -2305,11 +2305,11 @@ function load_ui(jquery) {
 	};
 
 	var bar_title = {
-		template: "<view class=\"bar_title\"><slot></slot></view>",
+		template: "<div class=\"bar_title\"><slot></slot></div>",
 		props: {}
 	};
 	var mm_content = {
-		template: "<view class=\"mm_content\"><slot></slot></view>",
+		template: "<div class=\"mm_content\"><slot></slot></div>",
 		props: {}
 	};
 	var mm_form = {
@@ -2318,7 +2318,7 @@ function load_ui(jquery) {
 	};
 
 	var mm_upload_img = {
-		template: "<view class=\"mm_upload_img\" v-bind:class=\"{ 'upload_add': !bg && !value }\">\t<view @click=\"choose()\"><mm_icon :src=\"value\" :style=\"'width:' + width + other\"></mm_icon>\t<slot></slot>\t<input type=\"file\" hidden @change=\"addImg\" :id=\"name\" accept=\"image/*\"/></view><view class=\"btns\"><mm_btn class='btn_default-x btn_link' v-if=\"value\" @click.native=\"preview = true\">预览</mm_btn><mm_btn class='btn_warning-x btn_link' v-if=\"value\" @click.native=\"$emit('input','')\">删除</mm_btn></view><mm_modal v-model=\"preview\" mask=\"true\"><view><img :src=\"value\" style=\"max-width:100%\" :alt=\"name\" /></view><mm_btn class=\"btn_close\" @click.native=\"preview = false\"><i class=\"fa-close\"></i></mm_btn></mm_modal></view>",
+		template: "<div class=\"mm_upload_img\" v-bind:class=\"{ 'upload_add': !bg && !value }\">\t<div @click=\"choose()\"><mm_icon :src=\"value\" :style=\"'width:' + width + other\"></mm_icon>\t<slot></slot>\t<input type=\"file\" hidden @change=\"addImg\" :id=\"name\" accept=\"image/*\"/></div><div class=\"btns\"><mm_btn class='btn_default-x btn_link' v-if=\"value\" @click.native=\"preview = true\">预览</mm_btn><mm_btn class='btn_warning-x btn_link' v-if=\"value\" @click.native=\"$emit('input','')\">删除</mm_btn></div><mm_modal v-model=\"preview\" mask=\"true\"><div><img :src=\"value\" style=\"max-width:100%\" :alt=\"name\" /></div><mm_btn class=\"btn_close\" @click.native=\"preview = false\"><i class=\"fa-close\"></i></mm_btn></mm_modal></div>",
 		model: {
 			prop: 'value',
 			event: 'input'
@@ -2402,7 +2402,7 @@ function load_ui(jquery) {
 	};
 
 	var mm_time = {
-		template: "<view class=\"mm_time\"><view class=\"title\" v-if=\"title\" v-html=\"title\"></view><view class=\"value\" v-bind:class=\"{'disabled': disabled }\"><input :type=\"type || 'datetime'\" :value=\"value\" @blur=\"set\" :disabled=\"disabled\"></select></view><view class=\"tip\" v-if=\"tip\">{{ tip }}</view></view>",
+		template: "<div class=\"mm_time\"><div class=\"title\" v-if=\"title\" v-html=\"title\"></div><div class=\"value\" v-bind:class=\"{'disabled': disabled }\"><input :type=\"type || 'datetime'\" :value=\"value\" @blur=\"set\" :disabled=\"disabled\"></select></div><div class=\"tip\" v-if=\"tip\">{{ tip }}</div></div>",
 		mixins: [form_mixin],
 		methods: {
 			set: function set(e) {
@@ -2422,8 +2422,8 @@ function load_ui(jquery) {
 		}
 	};
 
-	var mm_textarea = {
-		template: "<view class=\"mm_textarea\" :class=\"{ 'show-expand': sw }\"><view class=\"title\" v-if=\"title\" v-html=\"title\"></view><view class=\"value\" v-bind:class=\"{'disabled': disabled }\"><textarea :value=\"value\" @blur=\"set\" :disabled=\"disabled\" :placeholder=\"desc || placeholder\" v-if=\"type == 'text'\"></textarea><button class=\"btn_expand\" type=\"button\" v-show=\"$slots.default\" @click=\"sw = !sw\"><i class=\"fa-expand\"></i></button></view><view class=\"tip\" v-if=\"tip\">{{ tip }}</view><slot></slot></view>",
+	var control_textarea = {
+		template: "<div class=\"control_textarea\" :class=\"{ 'show-expand': sw }\"><div class=\"title\" v-if=\"title\" v-html=\"title\"></div><div class=\"value\" v-bind:class=\"{'disabled': disabled }\"><textarea :value=\"value\" @blur=\"set\" :disabled=\"disabled\" :placeholder=\"desc || placeholder\" v-if=\"type == 'text'\"></textarea><button class=\"btn_expand\" type=\"button\" v-show=\"$slots.default\" @click=\"sw = !sw\"><i class=\"fa-expand\"></i></button></div><div class=\"tip\" v-if=\"tip\">{{ tip }}</div><slot></slot></div>",
 		mixins: [form_mixin],
 		props: {
 			placeholder: {
@@ -2553,7 +2553,7 @@ function load_ui(jquery) {
 			Vue.component("control_input", control_input);
 			Vue.component("control_number", control_number);
 			Vue.component("mm_time", mm_time);
-			Vue.component("mm_textarea", mm_textarea);
+			Vue.component("control_textarea", control_textarea);
 			Vue.component("control_pager", control_pager);
 			Vue.component("control_radio", control_radio);
 			Vue.component("control_reverse", control_reverse);

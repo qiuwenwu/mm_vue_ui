@@ -13,9 +13,8 @@
 </template>
 
 <script>
-	import mixin from '/src/mixins/component.js';
-	import Swiper from "swiper";
-
+	import mixin from '@/mixins/component.js';
+  
 	export default {
 		mixins: [
 			mixin
@@ -28,7 +27,7 @@
 		},
 		methods: {
 			doing() {
-				var swiper = new Swiper("#" + this.id, {
+				var swiper = new this.$Swiper("#" + this.id, {
 					speed: 2000,
 					autoplay: {
 						delay: 2800,
