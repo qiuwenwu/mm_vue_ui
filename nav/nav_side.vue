@@ -1,29 +1,13 @@
 <template>
 	<!-- 侧边导航 -->
 	<div class="nav_side">
-		<div id="btn_open_nav" @click="open_nav"><slot><span>点击此处</span></slot></div>
+		<div id="btn_open_nav" @click="open_nav"><slot name="button"><span>点击此处</span></slot></div>
 
 		<!-- 模态 -->
 		<div class="modal_nav" :class="{ in: is_in ,out: is_out}">
 			<div class="modal_backdrop" @click="close_nav"></div>
 			<div class="modal_body">
-				<!-- 一级 -->
-				<div class="nav_item" v-for="(o,i) in list" :key="i">
-					<a class="btn_nav" :href="o.url" @click="open_sub(o,i)">
-						<i :class="o.icon" v-if="o.icon"></i>
-						<span>{{o.title}}</span>
-						<i class="arrow_nav" :class="{rotate:key_rotate === i,rotate_back:key_rotate !== i}" v-if="has_sub(o)"></i>
-					</a>
-					<!-- 二级 -->
-					<div class="sub_list" v-if="has_sub(o)" :style="get_height(o,i)">
-						<div class="sub_item" v-for="(obj,idx) in o.sub">
-							<a @click="close_nav" class="btn_nav" :href="obj.url">
-								<i :class="obj.icon" v-if="obj.icon"></i>
-								<span>{{obj.title}}</span>
-							</a>
-						</div>
-					</div>
-				</div>
+				<slot></slot>
 			</div>
 		</div>
 	</div>
