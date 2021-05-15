@@ -6,7 +6,6 @@
 
 <script>
 	export default {
-
 		props: {
 			col: {
 			  type: Number,
@@ -17,11 +16,11 @@
 			cl: function cl() {
 				var cl = this.col;
 
-				if (cl && cl.indexOf("-") == -1) {
-					cl = " row-" + cl;
+				if (cl) {
+					return " row-" + cl;
 				}
 
-				return cl;
+				return "";
 			}
 		}
 	};
