@@ -14,7 +14,7 @@
 
 <script>
 	import mixin from '@/mixins/component.js';
-  
+
 	export default {
 		mixins: [
 			mixin
@@ -28,7 +28,7 @@
 		methods: {
 			doing() {
 				var swiper = new this.$Swiper("#" + this.id, {
-					speed: 2000,
+					speed: 350,
 					autoplay: {
 						delay: 2800,
 						disableOnInteraction: false,

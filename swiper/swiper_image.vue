@@ -29,7 +29,7 @@
 		methods: {
 			doing() {
 				var swiper = new this.$Swiper('#' + this.id, {
-					speed: 2000,
+					speed: 350,
 					autoplay: {
 						delay: 2800,
 						disableOnInteraction: false,

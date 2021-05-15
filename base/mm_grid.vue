@@ -8,8 +8,8 @@
 	export default {
 		props: {
 			col: {
-				type: String,
-				default: ""
+			  type: Number,
+			  default: 0
 			}
 		},
 		computed: {

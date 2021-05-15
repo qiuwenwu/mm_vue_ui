@@ -42,6 +42,7 @@
 		methods: {
 			doing() {
 				var swiper = new this.$Swiper(this.id, {
+					speed: 350,
 					autoplay: this.autoplay,
 					slidesPerView: 1,
 					pagination: {

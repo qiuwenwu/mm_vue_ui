@@ -4,8 +4,8 @@
 </template>
 
 <script>
-	// import hljs from '@/static/highlight/vue-highlight.js';
-  // import "@/static/highlight/styles/vs2015.css";
+	import hljs from '/highlight/vue-highlight.js';
+	import hybrid from '/highlight/styles/vs2015.css';
 
 	export default {
 		props: {
