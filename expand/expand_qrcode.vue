@@ -1,12 +1,9 @@
 <template>
 	<!-- 二维码拓展 -->
-	<div class="expand_qrcode" :id="id || ide"></div>
+	<div class="expand_qrcode" :id="id || ide"><slot></slot></div>
 </template>
 
 <script>
-	import jquery from 'jquery';
-	import qrcode from '/js/qrcode.min.js';
-
 	export default {
 		props: {
 			id: {
