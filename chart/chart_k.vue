@@ -490,7 +490,7 @@
 			create_kline() {
 				// 找到容器
 				var com = document.getElementById(this.id);
-				let kChart = this.$echarts.init(com);
+				let kChart = echarts.init(com);
 				kChart.clear();
 				kChart.setOption(initKOption(this.list, this.colors, this.time_format,this.vm));
 			}

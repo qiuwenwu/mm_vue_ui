@@ -110,7 +110,7 @@
 		methods: {
 			init_chart() {
 				var option = this.option;
-				let myChart = this.$echarts.init(document.getElementById(this.id));
+				let myChart = echarts.init(document.getElementById(this.id));
 				myChart.setOption(option);
 			},
 			/**

@@ -86,7 +86,7 @@
 				// 获取参数
 				this.option.series[0].data = this.list;
 
-				let myChart = this.$echarts.init(document.getElementById(this.id));
+				let myChart = echarts.init(document.getElementById(this.id));
 				myChart.setOption(this.option);
 			},
 		},

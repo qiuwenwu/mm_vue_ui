@@ -4,8 +4,8 @@
 
 <script>
 	import mixin from '@/mixins/component.js'
-	
-	
+
+
 	export default {
 		name: "chart_bar",
 		mixins: [mixin],
@@ -77,23 +77,22 @@
 		methods: {
 			init_chart() {
 				var option = this.option;
-				
+
 				// 获取标题
 				var title = this.title;
 				if (title) {
 					option.title.text = title;
 				}
-				
+
 				// 获取参数
 				var series = this.series;
 				option.series = series;
-				
+
 				// 获取时间线
 				var list_time = this.list_time;
 				var xAxis = option.xAxis[0];
 				xAxis.data = list_time;
-				
-				let myChart = this.$echarts.init(document.getElementById(this.id));
+				let myChart = echarts.init(document.getElementById(this.id));
 				myChart.setOption(option);
 			},
 		},
@@ -117,15 +116,15 @@
 				var vm = this.vm;
 				var list = this.list;
 				var arr = [];
-				
+
 				if (list.length > 0) {
 					var dict_type = {};
 					var list_time = this.list_time;
-					
+
 					// 初始化数值长度
 					var init_num = new Array(list_time.length).fill(0);
-					
-					// 
+
+					//
 					for (var i = 0; i < list.length; i++) {
 						var o = list[i];
 						var name = o[vm.name];
@@ -138,7 +137,7 @@
 							}
 						}
 					};
-					
+
 					// 循环数据
 					list.map(o => {
 						var idx = list_time.indexOf(o[vm.time]);
@@ -148,7 +147,7 @@
 							dict_type[o[vm.name]].data[idx] = o[vm.value];
 						}
 					});
-					
+
 					// 数据添加
 					for (var key in dict_type) {
 						arr.push(dict_type[key]);

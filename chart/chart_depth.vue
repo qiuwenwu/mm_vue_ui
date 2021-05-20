@@ -6,7 +6,6 @@
 
 <script>
 	import mixin from '@/mixins/component.js';
-	import echarts from '/js/echarts.js';
 
 	export default {
 		mixins: [mixin],

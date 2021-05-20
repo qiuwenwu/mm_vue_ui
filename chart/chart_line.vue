@@ -3,9 +3,8 @@
 </template>
 
 <script>
-	import mixin from "/src/mixins/component.js";
-	
-	
+	import mixin from "@/mixins/component.js";
+
 	export default {
 		name: "chart_line",
 		components: {},
@@ -77,23 +76,23 @@
 		methods: {
 			init_chart() {
 				var option = this.option;
-				
+
 				// 标题
 				var title = this.title;
 				if(title){
 					option.title.text = title;
 				}
-				
+
 				// 获取参数
 				var series = this.series;
 				option.series = series;
-				
+
 				// 获取时间
 				var list_time = this.list_time;
 				var xAxis = option.xAxis;
 				xAxis.data = list_time;
 
-				let myChart = this.$echarts.init(document.getElementById(this.id));
+				let myChart = echarts.init(document.getElementById(this.id));
 				myChart.setOption(option);
 			},
 		},
@@ -120,10 +119,10 @@
 				if (list.length > 0) {
 					var list_time = this.list_time;
 					var dict_type = {};
-					
+
 					// 初始化数值长度
 					var init_num = new Array(list_time.length).fill(0);
-					
+
 					for (var i = 0; i < list.length; i++) {
 						var o = list[i];
 						var name = o[vm.name];
