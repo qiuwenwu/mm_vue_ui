@@ -1,5 +1,5 @@
 <template>
-	<div class="mm_time">
+	<div class="control_time">
 		<div class="title" v-if="title" v-html="title"></div>
 		<div class="value" v-bind:class="{'disabled': disabled }"><input :type="type || 'datetime'" :value="value" @blur="set"
 			 :disabled="disabled"></select></div>

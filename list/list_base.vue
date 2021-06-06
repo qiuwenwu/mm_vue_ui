@@ -1,6 +1,6 @@
 <template>
 	<div class="list_base" :class="cols">
-		<item_base v-for="(o, i) in list" :key="i" :viewmodel="vm" :obj="o" :css="css"
+		<item_base v-for="(o, i) in list" :key="i" :icon_key="icon_key" :viewmodel="vm" :obj="o" :css="css"
 			:class="(select === i ? ' active' : '')" @click.native="selected(i, o)">
 			<slot></slot>
 		</item_base>
@@ -12,6 +12,10 @@
 	export default {
 		mixins: [mixin],
 		props: {
+      icon_key: {
+        type: String,
+        default: ""
+      },
 			list: {
 				type: Array,
 				default: function() {

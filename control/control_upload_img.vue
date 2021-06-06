@@ -1,5 +1,5 @@
 <template>
-	<div class="mm_upload_img" v-bind:class="{ 'upload_add': !bg && !value }">\t<div @click="choose()">
+	<div class="control_upload_img" v-bind:class="{ 'upload_add': !bg && !value }">\t<div @click="choose()">
 			<mm_icon :src="value" :style="'width:' + width + other"></mm_icon>\t<slot></slot>\t<input type="file" hidden @change="addImg"
 			 :id="name" accept="image/*" />
 		</div>
@@ -70,7 +70,7 @@
 		},
 		methods: {
 			choose: function choose() {
-				this.$('.mm_upload_img #' + this.name).click();
+				this.$('.control_upload_img #' + this.name).click();
 			},
 			addImg: function addImg(e) {
 				var _this = this;

@@ -25,11 +25,11 @@
     },
     model: {
       prop: "show",
-      event: "input"
+      event: "change"
     },
     methods: {
       close: function close() {
-        this.$emit("input", false);
+        this.$emit("change", false);
       }
     }
   };

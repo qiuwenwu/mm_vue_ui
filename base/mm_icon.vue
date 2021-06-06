@@ -1,6 +1,8 @@
 <template>
 	<div class="mm_icon" v-if="src && src.indexOf('<') !==-1" v-html="src"></div>
-	<div class="mm_icon" v-else-if="src" :style="'background-image: url(' + src + ');' "><img class="img" :src="src"
+  <div class="mm_icon" v-else-if="src.indexOf('.') === -1"><i :class="src"></i></div>
+	<div class="mm_icon" v-else-if="src">
+    <img class="img" :src="src"
 		 :alt="alt" :onerror="onerror" />
 		<figcaption v-if="$slots.default">
 			<slot></slot>
