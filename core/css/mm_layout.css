@@ -612,8 +612,6 @@ ol.mm_list li::before {
 	top: 50%;
 	left: 50%;
 	width: 100%;
-	max-width: fit-content;
-	display: inline-block;
 	transform: translate(-50%, -50%);
 	overflow: hidden;
 }
@@ -671,6 +669,11 @@ ol.mm_list li::before {
 	background-size: 100%;
 	position: relative;
 	width: fit-content;
+	line-height: 1;
+}
+.mm_icon .img {
+	position: relative;
+	top: -0.125rem;
 }
 
 .img-auto .mm_icon {
