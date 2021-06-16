@@ -402,7 +402,7 @@ input[type=range]:-ms-thumb {
 	width: 1rem;
 	height: 1rem;
 	border-radius: 50%;
-	background: var(--color_info);
+	background: var(--color_primary);
 	cursor: pointer;
 	margin-top: -0.875rem;
 }

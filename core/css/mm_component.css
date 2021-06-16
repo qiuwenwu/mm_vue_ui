@@ -975,6 +975,7 @@ table .control_reverse .title {
 .mm_loading {
   text-align: center;
   max-width: 8rem;
+  margin: auto;
 }
 
 .mm_loading .load {
