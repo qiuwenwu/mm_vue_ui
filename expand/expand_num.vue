@@ -15,7 +15,7 @@
       },
       init_num: {
         type: Number,
-        default: 0
+        default: 0.00
       },
       num: {
         type: Number,
@@ -25,10 +25,14 @@
         type: Boolean,
         default: false
       },
-      decimal: {
+      decimals: {
         type: Number,
         default: 0
       },
+      duration: {
+        type: Number,
+        default: 2
+      }
     },
     data() {
       return {
@@ -40,10 +44,12 @@
       change_num(start, end) {
         var options = {
           startVal: start,
+          duration: this.duration,
           useGrouping: this.useGrouping,
-          decimalPlaces: this.decimal
+          decimalPlaces: this.decimals
         };
-        this.countUp = new CountUp(this.$refs[this.name], end, this.options)
+        this.countUp = new CountUp(this.$refs[this.name], end, this.options);
+        $.push(this.countUp.options, options);
         if (!this.countUp.error) {
           this.countUp.start()
         } else {
