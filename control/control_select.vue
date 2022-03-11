@@ -4,10 +4,10 @@
     <div class="value" v-bind:class="{'disabled': disabled }"><select v-if="type === 'text'" :value="value"
         @change="set" :disabled="disabled">
         <option v-for="(o, idx) in options" :key="idx" :value="o[field]"><img v-if="src"
-            :src="src.replace('{0}', o.name)"><span>{{ o.name }}</span></option>
+            :src="src.replace('{0}', o[field])"><span>{{ o.name }}</span></option>
       </select><select v-else-if="type === 'multiple'" :value="value" @change="set" :disabled="disabled" multiple>
         <option v-for="(o, idx) in options" :key="idx" :value="o[field]"><img v-if="src"
-            :src="src.replace('{0}', o.name)"><span>{{ o.name }}</span></option>
+            :src="src.replace('{0}', o[field])"><span>{{ o.name }}</span></option>
       </select>
       <div class="click" v-else-if="type === 'click'" v-bind:class="{ 'current': sw }">
         <div :class="{'selected': !$slots.default}" @click="sw = !sw">
@@ -17,7 +17,7 @@
           <ul>
             <li v-for="(o, idx) in options" :key="idx" @click="click_fun(o[field]);sw = false"
               :class="{ 'active': value === o[field] }"><img v-if="src"
-                :src="src.replace('{0}', o.name)"><span>{{ o.name }}</span></li>
+                :src="src.replace('{0}', o[field])"><span>{{ o.name }}</span></li>
           </ul>
         </div>
       </div>
@@ -29,7 +29,7 @@
           <ul>
             <li v-for="(o, idx) in options" :key="idx" @click="click_fun(o[field])"
               :class="{ 'active': value === o[field] }"><img v-if="src"
-                :src="src.replace('{0}', o.name)"><span>{{ o.name }}</span></li>
+                :src="src.replace('{0}', o[field])"><span>{{ o.name }}</span></li>
           </ul>
         </div>
       </div>
